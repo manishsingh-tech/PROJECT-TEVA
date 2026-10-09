@@ -7,12 +7,11 @@ import matplotlib.pyplot as plt
 
 # Page Configuration
 st.set_page_config(
-    page_title="Pharma Supply Chain & Demand Forecasting", 
-    page_icon="💊", 
+    page_title="Pharma Supply Chain & Demand Forecasting",
     layout="wide"
 )
 
-st.title("💊 Pharma Supply Chain Demand Forecasting & Inventory Optimizer")
+st.title("Pharma Supply Chain Demand Forecasting & Inventory Optimizer")
 st.markdown("An enterprise-grade data science application designed to predict pharmaceutical demand, prevent stockouts, and optimize regional inventory levels.")
 
 @st.cache_data
@@ -45,7 +44,7 @@ def load_and_train_model():
     
     return df, model, features
 
-df, model, features = load_and_load_model() if 'load_and_load_model' in globals() else load_and_train_model()
+df, model, features = load_and_train_model() if 'load_and_train_model' in globals() else load_and_train_model()
 
 # Sidebar Filters
 st.sidebar.header("Supply Chain Parameters")
@@ -55,7 +54,7 @@ selected_region = st.sidebar.selectbox("Select Regional Hub", df['Region'].uniqu
 # Filter data based on user selection
 filtered_df = df[(df['SKU_ID'] == selected_sku) & (df['Region'] == selected_region)]
 
-st.subheader(f"📊 Inventory & Demand Dashboard: {selected_sku} ({selected_region})")
+st.subheader(f"Inventory & Demand Dashboard: {selected_sku} ({selected_region})")
 
 # Key Metrics Display
 col1, col2, col3 = st.columns(3)
@@ -67,12 +66,12 @@ if latest_row is not None:
     col3.metric("Optimal Safety Stock", f"{int(latest_row['Optimal_Safety_Stock'])} Units")
     
     if latest_row['Reorder_Alert']:
-        st.error("⚠️ **REORDER ALERT**: Stock level is below the optimal safety stock threshold! Immediate replenishment required.")
+        st.error("**REORDER ALERT**: Stock level is below the optimal safety stock threshold. Immediate replenishment required.")
     else:
-        st.success("✅ **Stock Status Healthy**: Current stock levels are sufficient to meet forecasted demand.")
+        st.success("**Stock Status Healthy**: Current stock levels are sufficient to meet forecasted demand.")
 
 # Historical Chart
-st.markdown("### 📈 Historical Sales vs Predicted Demand Trend")
+st.markdown("### Historical Sales vs Predicted Demand Trend")
 fig, ax = plt.subplots(figsize=(10, 4))
 ax.plot(filtered_df['Date'], filtered_df['Units_Sold'], label='Actual Sales', marker='o', color='teal', linewidth=2)
 ax.plot(filtered_df['Date'], filtered_df['Predicted_Demand'], label='Predicted Demand (XGBoost)', linestyle='--', marker='x', color='coral', linewidth=2)
@@ -83,5 +82,5 @@ ax.grid(True, linestyle=':', alpha=0.6)
 st.pyplot(fig)
 
 # Raw Filtered Data Table
-st.markdown("### 📋 Detailed Records View")
+st.markdown("### Detailed Records View")
 st.dataframe(filtered_df[['Date', 'SKU_ID', 'Product_Name', 'Region', 'Units_Sold', 'Stock_Level', 'Optimal_Safety_Stock', 'Reorder_Alert']], use_container_width=True)
