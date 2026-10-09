@@ -1,13 +1,13 @@
-# 💊 Pharma Supply Chain Demand Forecasting & Inventory Optimizer
+#  Pharma Supply Chain Demand Forecasting & Inventory Optimizer
 
 An enterprise-grade data science application designed to predict regional pharmaceutical demand, prevent stockouts, and optimize safety stock thresholds using machine learning.
 
 ---
 
-## 🚀 Project Overview
+##  Project Overview
 Pharmaceutical supply chains require highly accurate demand forecasting to prevent critical drug shortages (stockouts) while avoiding capital blockage from overstocking. This project implements an end-to-end Machine Learning pipeline and an interactive Streamlit web dashboard to analyze historical sales, track seasonal trends, and automate reorder alerts across multiple regional hubs and Product SKUs.
 
-## 🛠️ Tech Stack
+##  Tech Stack
 * **Language:** Python 3.14.7
 * **Core Libraries:** Pandas, NumPy
 * **Machine Learning:** XGBoost Regressor, Scikit-Learn
@@ -17,7 +17,7 @@ Pharmaceutical supply chains require highly accurate demand forecasting to preve
 
 ---
 
-## 📊 Key Features & Methodology
+##  Key Features & Methodology
 1. **Synthetic Data Engineering:** Generated a robust dataset (`720+ rows`) simulating 3 years of multi-regional sales, inventory levels, lead times, and unit pricing with embedded winter seasonal multipliers.
 2. **Time-Series Feature Engineering:** 
    - **Lag Features (`Lag_1_Units_Sold`):** Captures immediate preceding monthly demand patterns.
@@ -33,7 +33,7 @@ Pharmaceutical supply chains require highly accurate demand forecasting to preve
 
 ---
 
-## ⚙️ Installation & Running Locally
+##  Installation & Running Locally
 
 1. **Clone the repository:**
    ```bash
